@@ -1,17 +1,3 @@
-/* Blues */
-/* Greens */
-/* Yellows */
-/* Misc */
-/* dark shades of primary color*/
-/* The primary/main color */
-/* lighter shades of primary color */
-/* dark shades of secondary color*/
-/* secondary color */
-/* lighter shades of secondary color */
-/* darkest grey - used for headings */
-/* grey used for paragraphs */
-/* lightest grey - used for outlines */
-/* Other Colors used */
 .menu li {
   top: 100%;
   left: 0;
@@ -33,8 +19,6 @@
 *::before {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
   font-weight: normal;
   vertical-align: baseline;
   background: transparent;
@@ -189,14 +173,6 @@ button {
   cursor: pointer;
 }
 
-button,
-input[type=button] {
-  width: auto;
-  overflow: hidden;
-  border-color: transparent;
-  text-transform: capitalize;
-}
-
 .ie7 img {
   -ms-interpolation-mode: bicubic;
 }
@@ -207,155 +183,245 @@ input[type=button] {
   clear: both;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: #cee0f3;
-  color: #2e73b8;
-  line-height: 1.5;
-  font-size: 0.875rem;
+@font-face {
+  font-family: mariokart;
+  src: url("../Utils/FOT-RodinNTLGPro-EB.otf");
+}
+body,
+html {
+  font-family: mariokart;
+  background-image: url("../Utils/pt_top.png");
+  height: 100vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
-main {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+div#rotateScreen {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
   justify-content: center;
-}
-
-ul {
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  letter-spacing: 0.1rem;
-  text-transform: capitalize;
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.25rem;
-}
-
-h4 {
-  font-size: 0.875rem;
-}
-
-p {
-  margin-bottom: 1.25rem;
-  color: #577da2;
-}
-
-@media screen and (min-width: 800px) {
-  h1 {
-    font-size: 4rem;
-  }
-
-  h2 {
-    font-size: 2.5rem;
-  }
-
-  h3 {
-    font-size: 1.75rem;
-  }
-
-  h4 {
-    font-size: 1rem;
-  }
-
-  body {
-    font-size: 1rem;
-  }
-
-  h1,
-h2,
-h3,
-h4 {
-    line-height: 1;
-  }
-}
-.container {
-  width: 90vw;
-  margin: 5rem 0;
-  max-width: 620px;
-  background-color: #fff;
-  border-radius: 0.25rem;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-.container h3 {
-  font-weight: normal;
-  text-transform: none;
-  margin-bottom: 2rem;
-}
-.container .buttons {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  background-color: white;
 }
-
-.section {
-  width: 90vw;
-  margin: 0 auto;
-  max-width: 1170px;
-}
-
-@media only screen and (min-width: 1024px) {
-  .section {
-    width: 95vw;
-  }
-}
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  width: 12rem;
-  border-color: transparent;
-  background: #3b85ce;
-  font-weight: 700;
-  transition: all 0.5s linear;
-  border-radius: 0.25rem;
-  color: #cee0f3;
-  margin-left: 1rem;
-  align-self: center;
-  min-width: 2rem;
-}
-.btn:hover {
-  color: #1e4a76;
-  background: #b1cfec;
-}
-
-.loading {
+div#rotateScreen h1 {
   text-align: center;
 }
-
-.underline {
-  width: 5rem;
-  height: 0.25rem;
-  margin-bottom: 1.25rem;
-  background: #3b85ce;
+@media (orientation: portrait) {
+  div#rotateScreen {
+    display: flex;
+  }
 }
 
-.title {
-  margin-bottom: 4rem;
+div.icon {
+  position: absolute;
+  left: 0.5vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.icon img {
+  height: 12vh;
+  width: auto;
+}
+div.icon h1 {
+  font-size: calc(2.5vw + 2.5vh);
+  color: #00abee;
+}
+
+img.background {
+  position: absolute;
+  width: 50vw;
+  top: 15vh;
+  left: 25vw;
+  height: auto;
+  opacity: 0.2;
+  transform: skew(-10deg);
+}
+
+div.topPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+div.topPanel div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.topPanel div h3 {
+  font-size: calc(1vw + 1vh);
+  color: #00abee;
+}
+div.topPanel div input {
+  height: 3vh;
+  width: 3vh;
+}
+
+div.combo {
+  position: absolute;
+  width: 80%;
+  top: 17%;
+  left: 10%;
+  height: 50%;
+  display: grid;
+  grid-template-areas: "stats char" "stats vehicle" "btn btn";
+  justify-content: center;
+  grid-gap: 1vw;
+}
+div.combo div#stats {
+  grid-area: stats;
+  border: calc(0.2vw + 0.2vh) gold solid;
+  width: 40vw;
+  height: 45vh;
+  color: black;
+  -webkit-text-fill-color: white;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: calc(0.1vh + 0.1vh);
+  -webkit-text-stroke-color: black;
+  font-size: calc(1vw + 1vh);
+  display: grid;
+  grid-template-areas: "spd spdBar" "wt wtBar" "acc accBar" "hand handBar" "drift driftBar" "or orBar" "mt mtBar" "type driftStyle";
+  justify-content: flex-start;
+  align-items: center;
+}
+div.combo div#stats div.statBar {
+  background-color: gold;
+  height: 50%;
+  width: 10px;
+  transition: width 1s;
+}
+div.combo div#stats div#spd {
+  grid-area: spd;
+  width: 100%;
+}
+div.combo div#stats div#spdBar {
+  grid-area: spdBar;
+}
+div.combo div#stats div#wt {
+  grid-area: wt;
+  width: 100%;
+}
+div.combo div#stats div#wtBar {
+  grid-area: wtBar;
+}
+div.combo div#stats div#acc {
+  grid-area: acc;
+  width: 100%;
+}
+div.combo div#stats div#accBar {
+  grid-area: accBar;
+}
+div.combo div#stats div#hand {
+  grid-area: hand;
+  width: 100%;
+}
+div.combo div#stats div#handBar {
+  grid-area: handBar;
+}
+div.combo div#stats div#drift {
+  grid-area: drift;
+  width: 100%;
+}
+div.combo div#stats div#driftBar {
+  grid-area: driftBar;
+}
+div.combo div#stats div#or {
+  grid-area: or;
+  width: 100%;
+}
+div.combo div#stats div#orBar {
+  grid-area: orBar;
+}
+div.combo div#stats div#mt {
+  grid-area: mt;
+  width: 100%;
+}
+div.combo div#stats div#mtBar {
+  grid-area: mtBar;
+}
+div.combo div#stats div#type {
+  grid-area: type;
+  width: 100%;
+}
+div.combo div#stats div#driftStyle {
+  grid-area: driftStyle;
+}
+div.combo div#char {
+  grid-area: char;
+}
+div.combo div#vehicle {
+  grid-area: vehicle;
+}
+div.combo .btn {
+  grid-area: btn;
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  width: 90%;
+}
+div.combo .btn h1 {
+  width: 100%;
+}
+div.combo .btn:hover {
+  background-color: rgba(255, 215, 0, 0.4);
+}
+div.combo h1 {
+  font-family: mariokart;
+  color: black;
+  -webkit-text-fill-color: white;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: calc(0.2vh + 0.2vh);
+  -webkit-text-stroke-color: black;
+  font-size: calc(3vw + 3vh);
   text-align: center;
+  height: 20vh;
+  width: 50vw;
+  margin: 1vw auto unset auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: calc(0.2vw + 0.2vh) gold solid;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+h2#surprise {
+  position: absolute;
+  top: 90%;
+  right: 2%;
+  width: 98%;
+  text-align: right;
+  color: black;
+  -webkit-text-fill-color: white;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: calc(0.1vh + 0.1vh);
+  -webkit-text-stroke-color: black;
+  font-size: calc(1vw + 1vh);
+}
+
+p#authorText {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #00abee;
+  font-size: calc(1vw + 1vh);
 }
 
 /*# sourceMappingURL=main.css.map */

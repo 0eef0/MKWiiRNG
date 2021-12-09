@@ -1,78 +1,265 @@
-@use "../themes/defaultTheme" as *;
 @use "../util/variables" as *;
 @use "../util/mixins" as *;
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: $clr-primary-9;
-  color: $clr-primary-3;
-  line-height: 1.5;
-  font-size: 0.875rem;
+@font-face {
+  font-family: mariokart;
+  src: url("../Utils/FOT-RodinNTLGPro-EB.otf");
 }
 
-main {
-  min-height: 100vh;
-  @include flex-center;
+body,
+html {
+  font-family: mariokart;
+  background-image: url("../Utils/pt_top.png");
+  height: 100vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
-ul {
-  list-style-type: none;
-}
+div#rotateScreen {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 
-a {
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  letter-spacing: $spacing;
-  text-transform: capitalize;
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-}
-
-h1 {
-  font-size: 3rem;
-}
-h2 {
-  font-size: 2rem;
-}
-h3 {
-  font-size: 1.25rem;
-}
-h4 {
-  font-size: 0.875rem;
-}
-
-p {
-  margin-bottom: 1.25rem;
-  color: $clr-grey-4;
-}
-
-@media screen and (min-width: 800px) {
   h1 {
-    font-size: 4rem;
-  }
-  h2 {
-    font-size: 2.5rem;
-  }
-  h3 {
-    font-size: 1.75rem;
-  }
-  h4 {
-    font-size: 1rem;
+    text-align: center;
   }
 
-  body {
-    font-size: 1rem;
+  @media (orientation: portrait) {
+    & {
+      display: flex;
+    }
   }
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: 1;
+}
+
+div.icon {
+  position: absolute;
+  left: 0.5vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  img {
+    height: 12vh;
+    width: auto;
   }
+  h1 {
+    font-size: calc(2.5vw + 2.5vh);
+    color: #00abee;
+  }
+}
+
+img.background {
+  position: absolute;
+  width: 50vw;
+  top: 15vh;
+  left: 25vw;
+  height: auto;
+  opacity: 0.2;
+  transform: skew(-10deg);
+}
+
+div.topPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      font-size: calc(1vw + 1vh);
+      color: #00abee;
+    }
+    input {
+      height: 3vh;
+      width: 3vh;
+    }
+  }
+}
+
+// div.muteBtn {
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   padding: 0.3vw;
+// }
+
+div.combo {
+  position: absolute;
+  width: 80%;
+  top: 17%;
+  left: 10%;
+  height: 50%;
+  display: grid;
+  grid-template-areas:
+    "stats char"
+    "stats vehicle"
+    "btn btn";
+  justify-content: center;
+  grid-gap: 1vw;
+
+  div#stats {
+    grid-area: stats;
+    border: calc(0.2vw + 0.2vh) gold solid;
+    width: 40vw;
+    height: 45vh;
+    color: black;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: calc(0.1vh + 0.1vh);
+    -webkit-text-stroke-color: black;
+    font-size: calc(1vw + 1vh);
+
+    display: grid;
+    grid-template-areas:
+      "spd spdBar"
+      "wt wtBar"
+      "acc accBar"
+      "hand handBar"
+      "drift driftBar"
+      "or orBar"
+      "mt mtBar"
+      "type driftStyle";
+    justify-content: flex-start;
+    align-items: center;
+
+    div.statBar {
+      background-color: gold;
+      height: 50%;
+      width: 10px;
+      transition: width 1s;
+    }
+
+    div#spd {
+      grid-area: spd;
+      width: 100%;
+    }
+    div#spdBar {
+      grid-area: spdBar;
+    }
+    div#wt {
+      grid-area: wt;
+      width: 100%;
+    }
+    div#wtBar {
+      grid-area: wtBar;
+    }
+    div#acc {
+      grid-area: acc;
+      width: 100%;
+    }
+    div#accBar {
+      grid-area: accBar;
+    }
+    div#hand {
+      grid-area: hand;
+      width: 100%;
+    }
+    div#handBar {
+      grid-area: handBar;
+    }
+    div#drift {
+      grid-area: drift;
+      width: 100%;
+    }
+    div#driftBar {
+      grid-area: driftBar;
+    }
+    div#or {
+      grid-area: or;
+      width: 100%;
+    }
+    div#orBar {
+      grid-area: orBar;
+    }
+    div#mt {
+      grid-area: mt;
+      width: 100%;
+    }
+    div#mtBar {
+      grid-area: mtBar;
+    }
+    div#type {
+      grid-area: type;
+      width: 100%;
+    }
+    div#driftStyle {
+      grid-area: driftStyle;
+    }
+  }
+  div#char {
+    grid-area: char;
+  }
+  div#vehicle {
+    grid-area: vehicle;
+  }
+  .btn {
+    grid-area: btn;
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    width: 90%;
+    h1 {
+      width: 100%;
+    }
+    &:hover {
+      background-color: rgba($color: gold, $alpha: 0.4);
+    }
+  }
+
+  h1 {
+    font-family: mariokart;
+    color: black;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: calc(0.2vh + 0.2vh);
+    -webkit-text-stroke-color: black;
+    font-size: calc(3vw + 3vh);
+    text-align: center;
+    height: 20vh;
+    width: 50vw;
+    margin: 1vw auto unset auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: calc(0.2vw + 0.2vh) gold solid;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+  }
+}
+
+h2#surprise {
+  position: absolute;
+  top: 90%;
+  right: 2%;
+  width: 98%;
+  text-align: right;
+  color: black;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: calc(0.1vh + 0.1vh);
+  -webkit-text-stroke-color: black;
+  font-size: calc(1vw + 1vh);
+}
+
+p#authorText {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #00abee;
+  font-size: calc(1vw + 1vh);
 }

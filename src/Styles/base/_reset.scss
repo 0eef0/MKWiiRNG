@@ -3,8 +3,6 @@
 *::before {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
   font-weight: normal;
   vertical-align: baseline;
   background: transparent;
@@ -162,15 +160,6 @@ input[type="submit"],
 input[type="file"],
 button {
   cursor: pointer;
-}
-
-//fix buttons for IE7
-button,
-input[type="button"] {
-  width: auto;
-  overflow: hidden;
-  border-color: transparent;
-  text-transform: capitalize;
 }
 
 //fix scalable imgs for IE7
