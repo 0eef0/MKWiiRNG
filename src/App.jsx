@@ -30,29 +30,15 @@ const App = () => {
     const [playBreak] = useSound(itemBreak, {soundEnabled});
     const [playRoulette] = useSound(roulette, {soundEnabled});
 
-    // const getCharacters = async () => {
-    //     const char = await axios.get('http://localhost:5000/api/v1/characters', {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         }
-    //     });
-    //     setCharacters(char.data);
-    // }
-    // const getVehicles = async () => {
-    //     const vehicle = await axios.get(`http://localhost:5000/api/v1/vehicles`, {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-    //     setVehicles(vehicle.data);
-    // }
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        // getCharacters()
-        // .then(getVehicles())
-        getData();
+        getData()
+        .then(setLoading(false));
     }, []);
+
     const getData = async () => {
-        const data = await axios.get('https://thecapn-mec.github.io/marioKartWiiAPI/data.json', {
+        const data = await axios.get('https://0eef0.github.io/marioKartWiiAPI/data.json', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -100,6 +86,10 @@ const App = () => {
             if(Math.floor(Math.random() * 10) < 1) {setSurprise(true)};
         }, 3500);
     };
+
+    if(loading){
+        return <div className="loading">Loading</div>
+    }
 
     return (
         <>
